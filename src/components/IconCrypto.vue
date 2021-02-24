@@ -42,13 +42,16 @@ export default {
   },
   computed: {
     mediapath() {
-      let coin =
-        this.coinname !== undefined && this.coinname !== ""
-          ? this.coinname.toLowerCase()
-          : "generic";
-      return `https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.16.1/${
-        this.format
-      }/${this.color}/${coin + this.ext}`;
+      let coin
+      if (this.coinname !== 'generic' && this.coinname !== '' && this.coinname !== undefined) {
+        coin = this.coinname.toLowerCase()
+        return `https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.16.1/${
+          this.format
+        }/${this.color}/${coin + this.ext}`;
+      }
+      else {
+        return '~/assets/genericIcon.svg'
+      }
     }
   }
 };
